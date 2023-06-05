@@ -5,20 +5,47 @@
     <title>GLSL Shadertoy to Three.js</title>
     <style>
         body {
-          margin: 0;
-          padding: 0;
-          overflow: hidden;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
         }
         canvas {
-          display: block;
-          width: 100vw;
-          height: 100vh;
+            display: block;
+            width: 100vw;
+            height: 100vh;
+        }
+        .fullscreen {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            width: 2rem;
+            height: 2rem;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.0);
+            border: none;
+            outline: none;
+            font-family: 'Material Icons';
+            font-size: 24px;
+            color: rgba(255,255,255,0.2);
         }
     </style>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <canvas id="myCanvas"></canvas>
+    <button class="fullscreen" onclick="toggleFullScreen()">fullscreen</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="spiral.js"></script>
+    <script>
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+    </script>
 </body>
 </html>
